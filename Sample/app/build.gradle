@@ -1,5 +1,6 @@
 apply from: "../scripts/versions.gradle"
 apply plugin: 'com.android.application'
+apply plugin: 'com.apollographql.android'
 
 android {
     compileSdkVersion config.targetSdk
@@ -21,6 +22,12 @@ android {
     }
 }
 
+android {
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -32,6 +39,8 @@ dependencies {
     compile "com.android.support:support-v4:${compile.support}"
     compile "com.android.support:recyclerview-v7:${compile.support}"
     compile "com.android.support:design:${compile.support}"
+    compile "com.apollographql.android:converter:${compile.apollo}"
+    compile "com.squareup.retrofit2:retrofit:${compile.retrofit}"
 
     testCompile "junit:junit:${testCompile.jUnit}"
     testCompile "org.mockito:mockito-core:${testCompile.mockito}"
