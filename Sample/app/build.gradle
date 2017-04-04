@@ -1,14 +1,16 @@
+apply from: "../scripts/versions.gradle"
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion config.targetSdk
+    buildToolsVersion config.buildTools
+
     defaultConfig {
         applicationId "entreco.nl.sample"
-        minSdkVersion 23
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion config.minSdk
+        targetSdkVersion config.targetSdk
+        versionCode config.versionCode
+        versionName config.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -21,12 +23,20 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:support-v4:25.3.0'
-    compile 'com.android.support:recyclerview-v7:25.3.0'
-    compile 'com.android.support:design:25.3.0'
-    testCompile 'junit:junit:4.12'
+
+    compile "com.android.support:appcompat-v7:${compile.support}"
+    compile "com.android.support:support-v4:${compile.support}"
+    compile "com.android.support:recyclerview-v7:${compile.support}"
+    compile "com.android.support:design:${compile.support}"
+
+    testCompile "junit:junit:${testCompile.jUnit}"
+    testCompile "org.mockito:mockito-core:${testCompile.mockito}"
+    testCompile "org.robolectric:robolectric:${testCompile.robolectric}"
+    testCompile "org.robolectric:shadows-support-v4:${testCompile.robolectric}"
+    testCompile "org.powermock:powermock-module-junit4:${testCompile.powerMock}"
+    testCompile "org.powermock:powermock-api-mockito:${testCompile.powerMock}"
 }

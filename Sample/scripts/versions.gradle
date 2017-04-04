@@ -1,0 +1,26 @@
+ext.config = [
+
+    versionCode    : 1,
+    versionName    : "0.0.1",
+    targetSdk      : 25,
+    minSdk         : 21,
+    buildTools     : "25.0.2"
+
+]
+
+// Version of libraries and tools provided by Android framework
+ext.compile = [
+
+    gradle  : "2.3.0",
+    support : "25.3.0"
+
+]
+
+// Version of libraries and tools provided by Android framework
+ext.testCompile = [
+
+    jUnit               : "4.12",
+    mockito             : "1.10.19",
+    robolectric         : "3.3.2",
+    powerMock           : "1.6.4",
+]
