@@ -1,0 +1,12 @@
+query AllTechTalksQuery{
+  allTeckTalks(orderBy: date_DESC) {
+      topic
+      date
+      speaker {
+        name
+      }
+      room{
+        description
+      }
+    }
+}
