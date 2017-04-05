@@ -15,7 +15,7 @@ public class TechTalkApplication extends Application {
         super.onCreate();
     }
 
-    private synchronized ApolloClient getApolloClient() {
+    public synchronized ApolloClient getApolloClient() {
         if (apolloClient == null) {
             final HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

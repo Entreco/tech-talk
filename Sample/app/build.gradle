@@ -55,10 +55,17 @@ dependencies {
     compile "com.android.support:appcompat-v7:${compile.support}"
     compile "com.android.support:support-v4:${compile.support}"
     compile "com.android.support:recyclerview-v7:${compile.support}"
+    compile "com.android.support:cardview-v7:${compile.support}"
     compile "com.android.support:design:${compile.support}"
+    // CustomBindings
+    compile 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.0.1'
+    compile 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.0.1'
+    // Apollo
     compile "com.apollographql.apollo:apollo-runtime:${compile.apollo}"
+    // Retrofit
     compile "com.squareup.okhttp3:logging-interceptor:${compile.okHttpVersion}"
     compile "com.squareup.retrofit2:retrofit:${compile.retrofit}"
+    // Dagger
     compile "com.google.dagger:dagger:$compile.dagger"
     annotationProcessor "com.google.dagger:dagger-compiler:$compile.dagger"
 
