@@ -11,23 +11,13 @@
       android:name=".TechTalkApplication"
       android:theme="@style/AppTheme">
     <activity
-        android:name=".TechTalkListActivity"
+        android:name=".techtalk.TechTalkListActivity"
         android:label="@string/app_name"
         android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
-
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
-    </activity>
-    <activity
-        android:name=".TechTalkDetailActivity"
-        android:label="@string/title_pokemon_detail"
-        android:parentActivityName=".TechTalkListActivity"
-        android:theme="@style/AppTheme.NoActionBar">
-      <meta-data
-          android:name="android.support.PARENT_ACTIVITY"
-          android:value="entreco.nl.sample.TechTalkListActivity"/>
     </activity>
   </application>
 

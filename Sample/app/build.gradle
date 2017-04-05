@@ -14,10 +14,27 @@ android {
         versionName config.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests {
+            all {
+                // configure the test JVM arguments
+                jvmArgs '-noverify'
+            }
         }
     }
 }
@@ -42,6 +59,8 @@ dependencies {
     compile "com.apollographql.apollo:apollo-runtime:${compile.apollo}"
     compile "com.squareup.okhttp3:logging-interceptor:${compile.okHttpVersion}"
     compile "com.squareup.retrofit2:retrofit:${compile.retrofit}"
+    compile "com.google.dagger:dagger:$compile.dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$compile.dagger"
 
     testCompile "junit:junit:${testCompile.jUnit}"
     testCompile "org.mockito:mockito-core:${testCompile.mockito}"
