@@ -24,7 +24,7 @@ android {
 
 android {
     configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+        resolutionStrategy.force "com.google.code.findbugs:jsr305:${force.jsr}"
     }
 }
 
@@ -39,7 +39,8 @@ dependencies {
     compile "com.android.support:support-v4:${compile.support}"
     compile "com.android.support:recyclerview-v7:${compile.support}"
     compile "com.android.support:design:${compile.support}"
-    compile "com.apollographql.android:converter:${compile.apollo}"
+    compile "com.apollographql.apollo:apollo-runtime:${compile.apollo}"
+    compile "com.squareup.okhttp3:logging-interceptor:${compile.okHttpVersion}"
     compile "com.squareup.retrofit2:retrofit:${compile.retrofit}"
 
     testCompile "junit:junit:${testCompile.jUnit}"

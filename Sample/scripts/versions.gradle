@@ -1,29 +1,37 @@
 ext.config = [
 
-    versionCode: 1,
-    versionName: "0.0.1",
-    targetSdk  : 25,
-    minSdk     : 21,
-    buildTools : "25.0.2",
-    gradle     : "2.3.0",
-    apollo     : "0.2.1"
+    versionCode : 1,
+    versionName : "0.0.1",
+    targetSdk   : 25,
+    minSdk      : 21,
+    buildTools  : "25.0.2",
+    gradlePlugin: "2.3.0",
+    apolloPlugin: "0.2.3-SNAPSHOT"
 
 ]
 
-// Version of libraries and tools provided by Android framework
+// Version to include in App
 ext.compile = [
 
-    support : "25.3.0",
-    apollo  : "0.2.1",
-    retrofit: "2.1.0"
+    support      : "25.3.1",
+    apollo       : "0.2.3-SNAPSHOT",
+    retrofit     : "2.1.0",
+    okHttpVersion: "3.6.0",
+    jsr          : "3.0.1"
 
 ]
 
-// Version of libraries and tools provided by Android framework
+// Version that need to be forced
+ext.force = [
+
+    jsr: "3.0.1"
+
+]
+
+// Version for testing
 ext.testCompile = [
 
     jUnit      : "4.12",
     mockito    : "1.10.19",
     robolectric: "3.3.2",
-    powerMock  : "1.6.4"
-]
+    powerMock  : "1.6.4"]

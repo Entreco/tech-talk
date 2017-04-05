@@ -1,0 +1,9 @@
+query AllTackTalksQuery{
+  allTeckTalks{
+    topic
+    date
+    speaker{
+      name
+    }
+  }
+}
