@@ -1,7 +1,6 @@
 package entreco.nl.sample.techtalk;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 
 import com.apollographql.apollo.ApolloCall;
@@ -21,16 +20,16 @@ import nl.entreco.AllTechTalksQuery;
 
 class FetchTechTalkUsecase {
 
-    private final ApolloClient client;
-    private final Handler mainThreadHandler;
+    @NonNull private final ApolloClient client;
+    @NonNull private final Handler mainThreadHandler;
 
     @Inject
-    FetchTechTalkUsecase(ApolloClient client) {
+    FetchTechTalkUsecase(@NonNull final ApolloClient client, @NonNull final Handler handler) {
         this.client = client;
-        this.mainThreadHandler = new Handler(Looper.getMainLooper());
+        this.mainThreadHandler = handler;
     }
 
-    public void fetch(@NonNull final Callback capture) {
+    public void fetch(@NonNull final Callback callback) {
 
         client.newCall(new AllTechTalksQuery()).enqueue(
                 new ApolloCall.Callback<AllTechTalksQuery.Data>() {
@@ -49,7 +48,7 @@ class FetchTechTalkUsecase {
                         mainThreadHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                capture.onFetched(modelList);
+                                callback.onFetched(modelList);
                             }
                         });
 
@@ -57,7 +56,7 @@ class FetchTechTalkUsecase {
 
                     @Override
                     public void onFailure(@Nonnull ApolloException e) {
-                        capture.oops(e);
+                        callback.oops(e);
                     }
                 });
     }

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
+        <import type="android.view.View"/>
         <variable name="viewModel" type="entreco.nl.sample.techtalk.TechTalkViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:snack="@{viewModel.snack}">
 
         <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
@@ -19,9 +20,10 @@
                                                 app:layoutManager="@{LayoutManagers.linear()}"
                                                 app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <ProgressBar android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
                      android:layout_gravity="center"
-                     app:tt_visibility="@{viewModel.isLoading}"/>
+                     android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

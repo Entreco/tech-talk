@@ -1,5 +1,5 @@
 query AllTechTalksQuery{
-  allTeckTalks(orderBy: date_DESC) {
+    allTeckTalks(orderBy: date_ASC) {
       topic
       date
       speaker {

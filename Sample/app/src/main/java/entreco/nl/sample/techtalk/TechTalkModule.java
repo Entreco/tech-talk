@@ -1,6 +1,8 @@
 package entreco.nl.sample.techtalk;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 
 import com.apollographql.apollo.ApolloClient;
 
@@ -19,6 +21,6 @@ class TechTalkModule {
 
     @Provides
     FetchTechTalkUsecase provideFetchTechTalkUsecase() {
-        return new FetchTechTalkUsecase(apolloClient);
+        return new FetchTechTalkUsecase(apolloClient, new Handler(Looper.getMainLooper()));
     }
 }
