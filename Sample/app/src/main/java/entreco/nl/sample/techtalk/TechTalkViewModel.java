@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import java.util.Collection;
 
@@ -41,7 +40,7 @@ public class TechTalkViewModel implements FetchTechTalkUsecase.Callback {
 
     public void start() {
         isLoading.set(true);
-        fetchTechTalkUsecase.fetch(this);
+        fetchTechTalkUsecase.fetchAll(this);
     }
 
     @Override
@@ -61,7 +60,7 @@ public class TechTalkViewModel implements FetchTechTalkUsecase.Callback {
     }
 
     @BindingAdapter("tt_visibility")
-    public static void toggleVisibilityAnimation(@NonNull final ProgressBar view,
+    public static void toggleVisibilityAnimation(@NonNull final View view,
                                                  final boolean isLoading) {
         final float scale = isLoading ? 1.8F : 0.5F;
         final float alpha = isLoading ? 1F : 0.5F;

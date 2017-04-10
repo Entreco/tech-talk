@@ -17,6 +17,7 @@ import javax.inject.Inject;
 
 import entreco.nl.sample.techtalk.data.TechTalkModel;
 import nl.entreco.AllTechTalksQuery;
+import nl.entreco.UpcomingTechTalks;
 
 class FetchTechTalkUsecase {
 
@@ -29,7 +30,7 @@ class FetchTechTalkUsecase {
         this.mainThreadHandler = handler;
     }
 
-    public void fetch(@NonNull final Callback callback) {
+    void fetchAll(@NonNull final Callback callback) {
 
         client.newCall(new AllTechTalksQuery()).enqueue(
                 new ApolloCall.Callback<AllTechTalksQuery.Data>() {
@@ -57,6 +58,33 @@ class FetchTechTalkUsecase {
                     @Override
                     public void onFailure(@Nonnull ApolloException e) {
                         callback.oops(e);
+                    }
+                });
+    }
+
+    void fetchUpcoming(@NonNull final Callback callback){
+        client.newCall(new UpcomingTechTalks(System.currentTimeMillis())).enqueue(
+                new ApolloCall.Callback<UpcomingTechTalks.Data>() {
+                    @Override
+                    public void onResponse(@Nonnull final Response<UpcomingTechTalks.Data> response) {
+                        mainThreadHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                final List<UpcomingTechTalks.Data.AllTeckTalk> dataList =
+                                        response.data().allTeckTalks();
+
+                                final List<TechTalkModel> modelList =
+                                        new ArrayList<>(dataList.size());
+                                
+                                callback.onFetched(modelList);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(@Nonnull ApolloException e) {
+
                     }
                 });
     }

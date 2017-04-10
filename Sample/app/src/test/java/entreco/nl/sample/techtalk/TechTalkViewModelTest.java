@@ -52,7 +52,7 @@ public class TechTalkViewModelTest {
     @Test
     public void itShouldFetchTechTalksOnStart() throws Exception {
         subject.start();
-        verify(mockUsecase).fetch(any(FetchTechTalkUsecase.Callback.class));
+        verify(mockUsecase).fetchAll(any(FetchTechTalkUsecase.Callback.class));
     }
 
     @Test
@@ -113,14 +113,14 @@ public class TechTalkViewModelTest {
     private void simulateLoadFinished(List<TechTalkModel> list) {
         subject.start();
 
-        verify(mockUsecase).fetch(captorCallback.capture());
+        verify(mockUsecase).fetchAll(captorCallback.capture());
         captorCallback.getValue().onFetched(list);
     }
 
     private void simulateLoadError(Exception exception){
         subject.start();
 
-        verify(mockUsecase).fetch(captorCallback.capture());
+        verify(mockUsecase).fetchAll(captorCallback.capture());
         captorCallback.getValue().oops(exception);
     }
 }

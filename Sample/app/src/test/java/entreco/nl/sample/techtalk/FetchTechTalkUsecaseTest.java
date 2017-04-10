@@ -82,7 +82,7 @@ public class FetchTechTalkUsecaseTest {
         when(mockResponse.data()).thenReturn(mockData);
         when(mockData.allTeckTalks()).thenReturn(techTalks);
 
-        subject.fetch(mockCallback);
+        subject.fetchAll(mockCallback);
 
         verify(mockClient).newCall(any(Operation.class));
         verify(mockCall).enqueue(callbackCaptor.capture());
@@ -96,7 +96,7 @@ public class FetchTechTalkUsecaseTest {
         when(mockClient.newCall(any(Operation.class))).thenReturn(mockCall);
         when(mockResponse.data()).thenReturn(mockData);
 
-        subject.fetch(mockCallback);
+        subject.fetchAll(mockCallback);
 
         verify(mockClient).newCall(any(Operation.class));
         verify(mockCall).enqueue(callbackCaptor.capture());
