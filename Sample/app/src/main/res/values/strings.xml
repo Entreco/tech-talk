@@ -1,6 +1,8 @@
 <resources>
-  <string name="app_name">Sample</string>
-  <string name="by">Door: %1$s</string>
-  <string name="location">Locatie: %1$s</string>
+  <string name="app_name">CDP&#178; TechTalk\'s</string>
+  <string name="unknown_speaker">-</string>
   <string name="unknown_location">--</string>
+
+  <!-- Dynamic Shared Transition name -->
+  <string name="transition">transition_%1$s</string>
 </resources>

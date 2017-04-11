@@ -4,4 +4,7 @@
   <dimen name="app_bar_height">200dp</dimen>
   <dimen name="item_width">200dp</dimen>
   <dimen name="text_margin">16dp</dimen>
+
+  <integer name="longDuration">10000</integer>
+  <integer name="shortDuration">250</integer>
 </resources>

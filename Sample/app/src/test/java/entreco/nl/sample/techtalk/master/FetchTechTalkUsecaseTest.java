@@ -1,4 +1,4 @@
-package entreco.nl.sample.techtalk;
+package entreco.nl.sample.techtalk.master;
 
 import android.os.Handler;
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+
+    <data>
+        <variable name="transitionName" type="String"/>
+        <variable name="viewModel" type="entreco.nl.sample.techtalk.detail.DetailViewModel"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <ImageView
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:background="@color/primary_light"
+                    android:contentDescription="@null"
+                    android:minHeight="60dp"
+                    android:src="@drawable/ic_tt_text"
+                    android:stateListAnimator="@animator/icon_animator"
+                    android:transitionName="transition"
+                    app:custom_play="@{true}"
+                    app:layout_collapseMode="parallax" />
+
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    app:layout_scrollFlags="scroll" />
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:behavior_overlapTop="30dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/accent"
+            android:elevation="10dp"
+            android:src="@drawable/ic_person"
+            app:custom_play="@{true}"
+            app:fabSize="normal"
+            app:layout_anchor="@id/header"
+            app:layout_anchorGravity="bottom|right|end"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

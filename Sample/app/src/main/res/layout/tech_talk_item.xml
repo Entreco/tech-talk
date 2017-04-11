@@ -1,56 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
 >
     <data>
         <variable name="techTalk" type="entreco.nl.sample.techtalk.data.TechTalkModel"/>
-        <variable name="viewModel" type="entreco.nl.sample.techtalk.TechTalkViewModel"/>
+        <variable name="navigator" type="entreco.nl.sample.techtalk.Navigator"/>
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:onClick="@{() -> viewModel.onTechTalkClicked(techTalk)}"
-        android:padding="16dp">
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{(v) -> navigator.onTechTalkClicked(v, shared, techTalk)}"
+        android:padding="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="6dp"
+        app:cardPreventCornerOverlap="true">
 
-        <ImageView android:layout_width="80dp" android:layout_height="80dp"
+        <ImageView
+            android:id="@+id/shared"
+            android:layout_width="98dp" android:layout_height="80dp"
+            android:background="@drawable/ic_tt_background"
+            android:src="@drawable/ic_tt_text"
+            android:stateListAnimator="@animator/icon_animator"
+            android:transitionName="transition"
+            app:custom_play="@{true}"
         />
+        <!--android:transitionName="@{@string/transition(techTalk.data.date())}"-->
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="match_parent"
-                      android:layout_marginStart="80dp"
-                      android:padding="8dp"
-                      android:orientation="vertical">
+                      android:layout_marginStart="98dp"
+                      android:orientation="vertical"
+                      android:padding="8dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                android:textSize="24sp"
                 android:text="@{techTalk.data.topic()}"
+                android:textColor="@color/primary_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 tools:text="Hello"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{@string/by(techTalk.data.speaker().name())}"
-                android:textSize="18sp"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{techTalk.data.speaker().name() ?? @string/unknown_speaker}"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp"
                 tools:text="Hello"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="bottom"
-                android:textStyle="italic"
-                android:textSize="12sp"
-                android:paddingTop="8dp"
-                android:maxLines="1"
                 android:ellipsize="end"
-                android:text="@{@string/location(techTalk.data.room().description())}"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:paddingTop="2dp"
+                android:text="@{techTalk.data.room().description() ?? @string/unknown_location}"
+                android:textColor="@color/secondary_text"
+                android:textSize="12sp"
+                android:textStyle="italic"
                 tools:text="Hello\nanother line maybe?\nMore \n Even more??\nasdfasdf"/>
 
         </LinearLayout>

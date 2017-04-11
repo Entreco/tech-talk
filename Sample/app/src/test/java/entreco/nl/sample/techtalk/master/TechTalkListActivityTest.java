@@ -1,4 +1,4 @@
-package entreco.nl.sample.techtalk;
+package entreco.nl.sample.techtalk.master;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,8 +25,8 @@ public class TechTalkListActivityTest {
   private TechTalkListActivity subject;
 
   @Mock private ActivityTtListBinding mockBinding;
-  @Mock private TechTalkViewModel mockViewModel;
-  @Captor private ArgumentCaptor<TechTalkViewModel> captorViewModel;
+  @Mock private MasterViewModel mockViewModel;
+  @Captor private ArgumentCaptor<MasterViewModel> captorViewModel;
 
   @Before
   public void setUp() throws Exception {
@@ -63,7 +63,7 @@ public class TechTalkListActivityTest {
   }
 
   private void setupWithBindingAndViewModel(ActivityTtListBinding binding,
-      TechTalkViewModel viewModel) {
+      MasterViewModel viewModel) {
     subject.setBinding(binding, viewModel);
     verify(mockBinding).setViewModel(captorViewModel.capture());
   }

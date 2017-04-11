@@ -1,4 +1,4 @@
-package entreco.nl.sample.techtalk;
+package entreco.nl.sample.techtalk.master;
 
 import android.view.View;
 import android.view.ViewPropertyAnimator;
@@ -28,9 +28,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TechTalkViewModelTest {
+public class MasterViewModelTest {
 
-    @InjectMocks TechTalkViewModel subject;
+    @InjectMocks MasterViewModel subject;
 
     @Mock private FetchTechTalkUsecase mockUsecase;
     @Mock private TechTalkModel mockModel;
@@ -90,7 +90,7 @@ public class TechTalkViewModelTest {
 
     @Test
     public void itShouldStartLoadingAnimation() throws Exception {
-        TechTalkViewModel.toggleVisibilityAnimation(mockView, true);
+        MasterViewModel.toggleVisibilityAnimation(mockView, true);
 
         verify(mockView).animate();
         verify(mockViewPropertyAnimator).scaleX(1);
@@ -101,7 +101,7 @@ public class TechTalkViewModelTest {
 
     @Test
     public void itShouldStopLoadingAnimation() throws Exception {
-        TechTalkViewModel.toggleVisibilityAnimation(mockView, false);
+        MasterViewModel.toggleVisibilityAnimation(mockView, false);
 
         verify(mockView).animate();
         verify(mockViewPropertyAnimator).scaleX(0);

@@ -5,7 +5,7 @@
     <data>
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers"/>
         <import type="android.view.View"/>
-        <variable name="viewModel" type="entreco.nl.sample.techtalk.TechTalkViewModel"/>
+        <variable name="viewModel" type="entreco.nl.sample.techtalk.master.MasterViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -13,17 +13,30 @@
         android:layout_height="match_parent"
         app:snack="@{viewModel.snack}">
 
-        <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                app:itemBinding="@{viewModel.itemBinding}"
-                                                app:items="@{viewModel.items}"
-                                                app:layoutManager="@{LayoutManagers.linear()}"
-                                                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_scrollFlags="scroll"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:title="@string/app_name"/>
+        </android.support.design.widget.AppBarLayout>
 
-        <ProgressBar android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:items="@{viewModel.items}"
+            app:layoutManager="@{LayoutManagers.linear()}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

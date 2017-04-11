@@ -1,4 +1,4 @@
-package entreco.nl.sample.techtalk;
+package entreco.nl.sample.techtalk.master;
 
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -40,19 +40,17 @@ class FetchTechTalkUsecase {
                         final List<AllTechTalksQuery.Data.AllTeckTalk> dataList =
                                 response.data().allTeckTalks();
 
-                        final List<TechTalkModel> modelList =
-                                new ArrayList<>(dataList.size());
-                        for (AllTechTalksQuery.Data.AllTeckTalk data : dataList) {
-                            modelList.add(new TechTalkModel(data));
+                        final List<TechTalkModel> allTalks = new ArrayList<>(dataList.size());
+                        for (final AllTechTalksQuery.Data.AllTeckTalk data : dataList) {
+                            allTalks.add(new TechTalkModel(data));
                         }
 
                         mainThreadHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                callback.onFetched(modelList);
+                                callback.onFetched(allTalks);
                             }
                         });
-
                     }
 
                     @Override
@@ -76,8 +74,8 @@ class FetchTechTalkUsecase {
 
                                 final List<TechTalkModel> modelList =
                                         new ArrayList<>(dataList.size());
-                                
-                                callback.onFetched(modelList);
+                           // TODO: Fetch with parameter
+//                                callback.onFetched(modelList);
                             }
                         });
                     }
@@ -90,6 +88,7 @@ class FetchTechTalkUsecase {
     }
 
     public interface Callback {
+
         void onFetched(@NonNull final Collection<TechTalkModel> talks);
 
         void oops(Exception oops);
