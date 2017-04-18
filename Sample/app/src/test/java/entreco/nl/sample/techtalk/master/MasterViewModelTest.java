@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyFloat;
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -113,10 +114,21 @@ public class MasterViewModelTest {
         verify(mockViewPropertyAnimator).start();
     }
 
+    @Test
+    public void itShouldNotAddDuplicateItems() throws Exception {
+        simulateLoadFinished(new ArrayList<TechTalkModel>(0));
+        simulateLoadFinished(new ArrayList<TechTalkModel>(0));
+
+        assertEquals( 2, subject.items.size() );
+
+    }
+
     private void simulateLoadFinished(List<TechTalkModel> list) {
         subject.start();
 
         verify(mockUsecase).fetchUpcoming(captorCallback.capture());
+        reset(mockUsecase);
+
         captorCallback.getValue().onFetched(list);
     }
 
@@ -124,6 +136,8 @@ public class MasterViewModelTest {
         subject.start();
 
         verify(mockUsecase).fetchUpcoming(captorCallback.capture());
+        reset(mockUsecase);
+
         captorCallback.getValue().oops(exception);
     }
 }

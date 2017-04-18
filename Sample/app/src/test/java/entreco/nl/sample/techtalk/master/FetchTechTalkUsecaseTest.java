@@ -18,6 +18,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import entreco.nl.sample.techtalk.data.TechTalkModel;
@@ -75,6 +76,12 @@ public class FetchTechTalkUsecaseTest {
         simulateError(exception);
 
         verify(mockCallback).oops(eq(exception));
+    }
+
+    @Test
+    public void itShouldGenerateCorrectDateForToday() throws Exception {
+        assertEquals("1970-01-01", subject.generateDateString(new Date(0)));
+        assertEquals("2017-04-18", subject.generateDateString(new Date(1492544754000L)));
     }
 
     private void simulateSuccess(List<AllTechTalksQuery.Data.AllTeckTalk> techTalks) {

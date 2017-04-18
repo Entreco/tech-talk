@@ -2,6 +2,7 @@ package entreco.nl.sample.techtalk.master;
 
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
@@ -39,21 +40,7 @@ class FetchTechTalkUsecase {
                 new ApolloCall.Callback<AllTechTalksQuery.Data>() {
                     @Override
                     public void onResponse(@Nonnull Response<AllTechTalksQuery.Data> response) {
-
-                        final List<AllTechTalksQuery.Data.AllTeckTalk> dataList =
-                                response.data().allTeckTalks();
-
-                        final List<TechTalkModel> allTalks = new ArrayList<>(dataList.size());
-                        for (final AllTechTalksQuery.Data.AllTeckTalk data : dataList) {
-                            allTalks.add(new TechTalkModel(data));
-                        }
-
-                        mainThreadHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                callback.onFetched(allTalks);
-                            }
-                        });
+                        parseResponse(response.data().allTeckTalks(), callback);
                     }
 
                     @Override
@@ -63,31 +50,33 @@ class FetchTechTalkUsecase {
                 });
     }
 
+    private <T> void parseResponse(@NonNull final List<T> dataList, @NonNull final Callback callback) {
+        final List<TechTalkModel> allTalks = new ArrayList<>(dataList.size());
+        for (final T data : dataList) {
+            if(data instanceof AllTechTalksQuery.Data.AllTeckTalk) {
+                allTalks.add(new TechTalkModel((AllTechTalksQuery.Data.AllTeckTalk) data));
+            } else if(data instanceof UpcomingTechTalks.Data.AllTeckTalk){
+                allTalks.add(new TechTalkModel((UpcomingTechTalks.Data.AllTeckTalk) data));
+            }
+        }
+
+        mainThreadHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                callback.onFetched(allTalks);
+            }
+        });
+    }
+
     void fetchUpcoming(@NonNull final Callback callback) {
 
-        final String today = generateDateStringToday();
+        final String today = generateDateString(new Date());
         client.newCall(new UpcomingTechTalks(today)).enqueue(
                 new ApolloCall.Callback<UpcomingTechTalks.Data>() {
                     @Override
                     public void onResponse(
                             @Nonnull final Response<UpcomingTechTalks.Data> response) {
-
-
-                        final List<UpcomingTechTalks.Data.AllTeckTalk> dataList =
-                                response.data().allTeckTalks();
-
-                        final List<TechTalkModel> modelList =
-                                new ArrayList<>(dataList.size());
-                        for (final UpcomingTechTalks.Data.AllTeckTalk data : dataList) {
-                            modelList.add(new TechTalkModel(data));
-                        }
-
-                        mainThreadHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                callback.onFetched(modelList);
-                            }
-                        });
+                        parseResponse(response.data().allTeckTalks(), callback);
                     }
 
                     @Override
@@ -97,9 +86,10 @@ class FetchTechTalkUsecase {
                 });
     }
 
-    private String generateDateStringToday() {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    String generateDateString(Date date) {
         final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        return sdf.format(new Date());
+        return sdf.format(date);
     }
 
     public interface Callback {

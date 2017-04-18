@@ -19,4 +19,23 @@ public class TechTalkModel {
         this.all = null;
         this.upcoming = data;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TechTalkModel that = (TechTalkModel) o;
+
+        if (all != null ? !all.equals(that.all) : that.all != null) return false;
+        return upcoming != null ? upcoming.equals(that.upcoming) : that.upcoming == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = all != null ? all.hashCode() : 0;
+        result = 31 * result + (upcoming != null ? upcoming.hashCode() : 0);
+        return result;
+    }
 }
