@@ -30,6 +30,10 @@ android {
     }
 
     testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    testOptions {
         unitTests {
             all {
                 // configure the test JVM arguments

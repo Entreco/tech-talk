@@ -6,7 +6,7 @@ ext.config = [
         minSdk      : 21, // for Robolectric unfortunately
         buildTools  : "25.0.2",
         gradlePlugin: "2.3.0",
-        apolloPlugin: "0.2.3-SNAPSHOT"
+        apolloPlugin: "0.3.0"
 
 ]
 
@@ -14,7 +14,7 @@ ext.config = [
 ext.compile = [
 
         support      : "25.3.1",
-        apollo       : "0.2.3-SNAPSHOT",
+        apollo       : "0.3.0",
         retrofit     : "2.1.0",
         okHttpVersion: "3.6.0",
         dagger       : "2.9",
