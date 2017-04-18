@@ -24,13 +24,23 @@
                 app:title="@string/app_name"/>
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v7.widget.RecyclerView
+        <android.support.v4.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swiperefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:itemBinding="@{viewModel.itemBinding}"
-            app:items="@{viewModel.items}"
-            app:layoutManager="@{LayoutManagers.linear()}"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:refreshing="@{viewModel.isLoading}"
+            android:onRefreshListener="@{() -> viewModel.onRefresh()}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.items}"
+                app:layoutManager="@{LayoutManagers.linear()}"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <ProgressBar
             android:layout_width="wrap_content"

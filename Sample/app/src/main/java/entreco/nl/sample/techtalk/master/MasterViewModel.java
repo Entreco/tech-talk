@@ -47,6 +47,10 @@ public class MasterViewModel implements FetchTechTalkUsecase.Callback {
         fetchTechTalkUsecase.fetchUpcoming(this);
     }
 
+    public void onRefresh() {
+        start();
+    }
+
     @Override
     public void onFetched(@NonNull Collection<TechTalkModel> talks) {
         isLoading.set(false);
@@ -55,8 +59,8 @@ public class MasterViewModel implements FetchTechTalkUsecase.Callback {
 
     /* Alas, we have to do check ourselves if the item was not added already ;( */
     private void addItemsIfNotAddedAlready(@NonNull final Collection<TechTalkModel> talks) {
-        for(final TechTalkModel ttm : talks) {
-            if(!items.contains(ttm)) {
+        for (final TechTalkModel ttm : talks) {
+            if (!items.contains(ttm)) {
                 items.addAll(talks);
             }
         }
