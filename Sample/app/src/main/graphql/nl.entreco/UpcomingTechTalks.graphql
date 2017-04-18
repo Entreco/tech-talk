@@ -1,17 +1,15 @@
 query upcomingTechTalks($date: DateTime)
 {
-  allTeckTalks(
-    filter: {
-    	date_gte: $date
-  	},
-    orderBy: date_ASC) {
-    	topic
-    	date
-    	speaker {
-	      name
-	    }
-	    room{
-	      description
-	    }
-  	}
+  allTeckTalks(filter: {
+    date_gte: $date
+  }, orderBy: date_ASC) {
+    topic
+    date
+    speaker {
+      name
+    }
+    room{
+      description
+    }
+  }
 }

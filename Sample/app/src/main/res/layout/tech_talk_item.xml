@@ -30,7 +30,6 @@
             android:transitionName="transition"
             app:custom_play="@{true}"
         />
-        <!--android:transitionName="@{@string/transition(techTalk.data.date())}"-->
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="match_parent"
@@ -40,7 +39,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{techTalk.data.topic()}"
+                android:text="@{techTalk.upcoming.topic()}"
                 android:textColor="@color/primary_dark"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -51,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@{techTalk.data.speaker().name() ?? @string/unknown_speaker}"
+                android:text="@{techTalk.upcoming.speaker().name() ?? @string/unknown_speaker}"
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp"
                 tools:text="Hello"/>
@@ -64,7 +63,7 @@
                 android:gravity="bottom"
                 android:maxLines="1"
                 android:paddingTop="2dp"
-                android:text="@{techTalk.data.room().description() ?? @string/unknown_location}"
+                android:text="@{techTalk.upcoming.room().description() ?? @string/unknown_location}"
                 android:textColor="@color/secondary_text"
                 android:textSize="12sp"
                 android:textStyle="italic"

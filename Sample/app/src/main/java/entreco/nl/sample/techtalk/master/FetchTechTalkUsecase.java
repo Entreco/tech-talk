@@ -8,9 +8,12 @@ import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -60,31 +63,43 @@ class FetchTechTalkUsecase {
                 });
     }
 
-    void fetchUpcoming(@NonNull final Callback callback){
-        client.newCall(new UpcomingTechTalks(System.currentTimeMillis())).enqueue(
+    void fetchUpcoming(@NonNull final Callback callback) {
+
+        final String today = generateDateStringToday();
+        client.newCall(new UpcomingTechTalks(today)).enqueue(
                 new ApolloCall.Callback<UpcomingTechTalks.Data>() {
                     @Override
-                    public void onResponse(@Nonnull final Response<UpcomingTechTalks.Data> response) {
+                    public void onResponse(
+                            @Nonnull final Response<UpcomingTechTalks.Data> response) {
+
+
+                        final List<UpcomingTechTalks.Data.AllTeckTalk> dataList =
+                                response.data().allTeckTalks();
+
+                        final List<TechTalkModel> modelList =
+                                new ArrayList<>(dataList.size());
+                        for (final UpcomingTechTalks.Data.AllTeckTalk data : dataList) {
+                            modelList.add(new TechTalkModel(data));
+                        }
+
                         mainThreadHandler.post(new Runnable() {
                             @Override
                             public void run() {
-
-                                final List<UpcomingTechTalks.Data.AllTeckTalk> dataList =
-                                        response.data().allTeckTalks();
-
-                                final List<TechTalkModel> modelList =
-                                        new ArrayList<>(dataList.size());
-                           // TODO: Fetch with parameter
-//                                callback.onFetched(modelList);
+                                callback.onFetched(modelList);
                             }
                         });
                     }
 
                     @Override
                     public void onFailure(@Nonnull ApolloException e) {
-
+                        callback.oops(e);
                     }
                 });
+    }
+
+    private String generateDateStringToday() {
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return sdf.format(new Date());
     }
 
     public interface Callback {

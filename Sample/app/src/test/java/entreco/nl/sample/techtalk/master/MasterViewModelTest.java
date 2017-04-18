@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import entreco.nl.sample.techtalk.Navigator;
 import entreco.nl.sample.techtalk.data.TechTalkModel;
 
 import static org.junit.Assert.assertEquals;
@@ -33,6 +34,7 @@ public class MasterViewModelTest {
     @InjectMocks MasterViewModel subject;
 
     @Mock private FetchTechTalkUsecase mockUsecase;
+    @Mock private Navigator mockNavigator;
     @Mock private TechTalkModel mockModel;
 
     @Mock private View mockView;
@@ -47,12 +49,13 @@ public class MasterViewModelTest {
         when(mockViewPropertyAnimator.scaleY(anyFloat())).thenReturn(mockViewPropertyAnimator);
         when(mockViewPropertyAnimator.alpha(anyFloat())).thenReturn(mockViewPropertyAnimator);
         when(mockViewPropertyAnimator.setDuration(anyInt())).thenReturn(mockViewPropertyAnimator);
+        when(mockViewPropertyAnimator.withEndAction(any(Runnable.class))).thenReturn(mockViewPropertyAnimator);
     }
 
     @Test
     public void itShouldFetchTechTalksOnStart() throws Exception {
         subject.start();
-        verify(mockUsecase).fetchAll(any(FetchTechTalkUsecase.Callback.class));
+        verify(mockUsecase).fetchUpcoming(any(FetchTechTalkUsecase.Callback.class));
     }
 
     @Test
@@ -76,7 +79,7 @@ public class MasterViewModelTest {
 
     @Test
     public void itShouldHideLoaderOnError() throws Exception {
-        simulateLoadError(any(Exception.class));
+        simulateLoadError(new IllegalStateException("oops"));
 
         assertFalse(subject.isLoading.get());
     }
@@ -104,23 +107,23 @@ public class MasterViewModelTest {
         MasterViewModel.toggleVisibilityAnimation(mockView, false);
 
         verify(mockView).animate();
-        verify(mockViewPropertyAnimator).scaleX(0);
-        verify(mockViewPropertyAnimator).scaleY(0);
-        verify(mockViewPropertyAnimator).alpha(0);
+        verify(mockViewPropertyAnimator).scaleX(0.5f);
+        verify(mockViewPropertyAnimator).scaleY(0.5f);
+        verify(mockViewPropertyAnimator).alpha(0.5f);
         verify(mockViewPropertyAnimator).start();
     }
 
     private void simulateLoadFinished(List<TechTalkModel> list) {
         subject.start();
 
-        verify(mockUsecase).fetchAll(captorCallback.capture());
+        verify(mockUsecase).fetchUpcoming(captorCallback.capture());
         captorCallback.getValue().onFetched(list);
     }
 
     private void simulateLoadError(Exception exception){
         subject.start();
 
-        verify(mockUsecase).fetchAll(captorCallback.capture());
+        verify(mockUsecase).fetchUpcoming(captorCallback.capture());
         captorCallback.getValue().oops(exception);
     }
 }

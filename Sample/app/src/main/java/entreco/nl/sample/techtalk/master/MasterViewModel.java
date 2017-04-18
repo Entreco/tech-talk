@@ -9,6 +9,7 @@ import android.graphics.drawable.Animatable2;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,27 +26,25 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
 public class MasterViewModel implements FetchTechTalkUsecase.Callback {
 
-    @NonNull public final ObservableBoolean isLoading;
-    @NonNull public final ObservableField<String> snack;
-    @NonNull public final ObservableList<TechTalkModel> items;
+    @NonNull public final ObservableBoolean isLoading = new ObservableBoolean();
+    @NonNull public final ObservableField<String> snack = new ObservableField<>();
+    @NonNull public final ObservableList<TechTalkModel> items = new ObservableArrayList<>();
+
     @NonNull public final ItemBinding<TechTalkModel> itemBinding =
             ItemBinding.of(BR.techTalk, R.layout.tech_talk_item);
 
     @NonNull private final FetchTechTalkUsecase fetchTechTalkUsecase;
 
     @Inject
-    MasterViewModel(@NonNull FetchTechTalkUsecase fetchTechTalkUsecase,
+    MasterViewModel(@NonNull final FetchTechTalkUsecase fetchTechTalkUsecase,
                     @NonNull final Navigator navigator) {
         this.fetchTechTalkUsecase = fetchTechTalkUsecase;
-        this.isLoading = new ObservableBoolean();
-        this.snack = new ObservableField<>();
-        this.items = new ObservableArrayList<>();
         this.itemBinding.bindExtra(BR.navigator, navigator);
     }
 
     void start() {
         isLoading.set(true);
-        fetchTechTalkUsecase.fetchAll(this);
+        fetchTechTalkUsecase.fetchUpcoming(this);
     }
 
     @Override
@@ -63,7 +62,7 @@ public class MasterViewModel implements FetchTechTalkUsecase.Callback {
     @BindingAdapter("tt_visibility")
     public static void toggleVisibilityAnimation(@NonNull final View view,
                                                  final boolean isLoading) {
-        final float scale = isLoading ? 1.8F : 0.5F;
+        final float scale = isLoading ? 1F : 0.5F;
         final float alpha = isLoading ? 1F : 0.5F;
 
         view.animate().scaleX(scale).scaleY(scale).alpha(alpha)
@@ -80,7 +79,9 @@ public class MasterViewModel implements FetchTechTalkUsecase.Callback {
 
     @BindingAdapter("snack")
     public static void showSnack(@NonNull final View view, final String message) {
-        Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_SHORT).show();
+        if (!TextUtils.isEmpty(message)) {
+            Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_SHORT).show();
+        }
     }
 
     @BindingAdapter("custom_play")
@@ -88,9 +89,6 @@ public class MasterViewModel implements FetchTechTalkUsecase.Callback {
 
         Drawable drawable = view.getDrawable();
         if (drawable instanceof Animatable2) {
-//            if (callback != null) {
-//                ((Animatable2) drawable).registerAnimationCallback(callback);
-//            }
             ((Animatable2) drawable).start();
         }
     }
