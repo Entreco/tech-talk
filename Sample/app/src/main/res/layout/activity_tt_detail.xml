@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
 >
 
     <data>
+        <import alias="View" type="android.view.View"/>
         <variable name="transitionName" type="String"/>
         <variable name="viewModel" type="entreco.nl.sample.techtalk.detail.DetailViewModel"/>
     </data>
@@ -34,12 +36,12 @@
                     android:stateListAnimator="@animator/icon_animator"
                     android:transitionName="transition"
                     app:custom_play="@{true}"
-                    app:layout_collapseMode="parallax" />
+                    app:layout_collapseMode="parallax"/>
 
                 <android.support.v7.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
-                    app:layout_scrollFlags="scroll" />
+                    app:layout_scrollFlags="scroll"/>
 
 
             </android.support.design.widget.CollapsingToolbarLayout>
@@ -48,9 +50,45 @@
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="16dp"
             android:scrollbars="none"
-            app:behavior_overlapTop="30dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:animateLayoutChanges="true"
+                          android:orientation="vertical">
+
+                <TextView
+                    style="@style/Details.Title"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@{viewModel.title}"
+                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}"
+                    tools:text="title"/>
+
+                <EditText
+                    style="@style/Details.Title"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@{viewModel.title}"
+                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}"/>
+
+                <TextView
+                    style="@style/Details.Speaker"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@{viewModel.speaker}"
+                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}"
+                    tools:text="Room"/>
+
+                <EditText
+                    style="@style/Details.Speaker"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@{viewModel.speaker}"
+                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}"
+                    tools:text="Room"/>
+
+            </LinearLayout>
+
         </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.FloatingActionButton
@@ -60,7 +98,8 @@
             android:layout_margin="8dp"
             android:background="@color/accent"
             android:elevation="10dp"
-            android:src="@drawable/ic_person"
+            android:onClick="@{() -> viewModel.toggle()}"
+            android:src="@{viewModel.isInEditMode ? @drawable/ic_save : @drawable/ic_edit}"
             app:custom_play="@{true}"
             app:fabSize="normal"
             app:layout_anchor="@id/header"

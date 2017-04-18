@@ -29,8 +29,9 @@
             android:id="@+id/swiperefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:refreshing="@{viewModel.isLoading}"
-            android:onRefreshListener="@{() -> viewModel.onRefresh()}"
+
+            app:refreshing="@{viewModel.isLoading}"
+            app:onRefreshListener="@{() -> viewModel.onRefresh()}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <android.support.v7.widget.RecyclerView

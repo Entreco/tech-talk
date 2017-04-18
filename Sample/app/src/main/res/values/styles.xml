@@ -18,10 +18,21 @@
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
   <style name="Master" parent="AppTheme">
-
+    <item name="android:windowExitTransition">@android:transition/fade</item>
   </style>
   <style name="Detail" parent="AppTheme">
+    <item name="android:windowEnterTransition">@android:transition/slide_bottom</item>
+  </style>
 
+  <style name="Details"></style>
+  <style name="Details.Title">
+    <item name="android:textColor">@color/primary_dark</item>
+    <item name="android:textSize">28sp</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+  <style name="Details.Speaker">
+    <item name="android:textColor">@color/primary_text</item>
+    <item name="android:textSize">20sp</item>
   </style>
 
 </resources>

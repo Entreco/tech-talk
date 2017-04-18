@@ -14,6 +14,7 @@ import android.view.View;
 
 import entreco.nl.sample.R;
 import entreco.nl.sample.databinding.ActivityTtListBinding;
+import entreco.nl.sample.techtalk.ApolloModule;
 import entreco.nl.sample.techtalk.Navigator;
 import entreco.nl.sample.techtalk.data.TechTalkModel;
 import entreco.nl.sample.techtalk.detail.TechTalkDetailActivity;
@@ -27,7 +28,9 @@ public class TechTalkListActivity extends AppCompatActivity implements Navigator
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setBinding(bindContentView(this, R.layout.activity_tt_list),
-                DaggerTechTalkComponent.builder().techTalkModule(new TechTalkModule(this, this))
+                DaggerTechTalkComponent.builder()
+                        .apolloModule(new ApolloModule(this))
+                        .techTalkModule(new TechTalkModule(this))
                         .build()
                         .viewModel());
     }

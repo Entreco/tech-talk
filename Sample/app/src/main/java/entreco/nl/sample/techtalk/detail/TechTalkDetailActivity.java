@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import entreco.nl.sample.R;
 import entreco.nl.sample.databinding.ActivityTtDetailBinding;
+import entreco.nl.sample.techtalk.ApolloModule;
 
 public class TechTalkDetailActivity extends AppCompatActivity
         implements AppBarLayout.OnOffsetChangedListener {
@@ -21,7 +22,14 @@ public class TechTalkDetailActivity extends AppCompatActivity
 
         final String transition = getIntent().getStringExtra("transition");
         binding.setTransitionName(transition);
-        binding.setViewModel(new DetailViewModel());
+
+        final DetailViewModel viewModel =
+                DaggerTechTalkDetailComponent.builder()
+                        .apolloModule(new ApolloModule(this))
+                        .techTalkDetailModule(new TechTalkDetailModule())
+                        .build().viewModel();
+
+        binding.setViewModel(viewModel);
         binding.appbarLayout.addOnOffsetChangedListener(this);
     }
 
