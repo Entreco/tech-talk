@@ -135,7 +135,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "RoomteckTalkTeckTalk",
+                "name": "RoomteckTalkTechTalk",
                 "ofType": null
               },
               "defaultValue": null
@@ -194,7 +194,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "SpeakerteckTalkTeckTalk",
+                "name": "SpeakerteckTalkTechTalk",
                 "ofType": null
               },
               "defaultValue": null
@@ -245,7 +245,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkroomRoom",
+                "name": "TechTalkroomRoom",
                 "ofType": null
               },
               "defaultValue": null
@@ -265,13 +265,13 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkspeakerSpeaker",
+                "name": "TechTalkspeakerSpeaker",
                 "ofType": null
               },
               "defaultValue": null
             }
           ],
-          "name": "CreateTeckTalk",
+          "name": "CreateTechTalk",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -1754,7 +1754,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "RoomteckTalkTeckTalk",
+                    "name": "RoomteckTalkTechTalk",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -1815,7 +1815,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SpeakerteckTalkTeckTalk",
+                    "name": "SpeakerteckTalkTechTalk",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -1828,7 +1828,7 @@
               }
             },
             {
-              "name": "createTeckTalk",
+              "name": "createTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -1868,7 +1868,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkroomRoom",
+                    "name": "TechTalkroomRoom",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -1888,7 +1888,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkspeakerSpeaker",
+                    "name": "TechTalkspeakerSpeaker",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -1896,7 +1896,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -1982,7 +1982,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "RoomteckTalkTeckTalk",
+                    "name": "RoomteckTalkTechTalk",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -2057,7 +2057,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "SpeakerteckTalkTeckTalk",
+                    "name": "SpeakerteckTalkTechTalk",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -2070,7 +2070,7 @@
               }
             },
             {
-              "name": "updateTeckTalk",
+              "name": "updateTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -2124,7 +2124,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkroomRoom",
+                    "name": "TechTalkroomRoom",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -2144,7 +2144,7 @@
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkspeakerSpeaker",
+                    "name": "TechTalkspeakerSpeaker",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -2152,7 +2152,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -2307,7 +2307,7 @@
               }
             },
             {
-              "name": "updateOrCreateTeckTalk",
+              "name": "updateOrCreateTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -2320,7 +2320,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "UpdateTeckTalk",
+                      "name": "UpdateTechTalk",
                       "ofType": null
                     }
                   },
@@ -2334,7 +2334,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "CreateTeckTalk",
+                      "name": "CreateTechTalk",
                       "ofType": null
                     }
                   },
@@ -2343,7 +2343,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -2456,7 +2456,7 @@
               }
             },
             {
-              "name": "deleteTeckTalk",
+              "name": "deleteTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -2478,7 +2478,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -2516,7 +2516,7 @@
               "deprecationReason": null,
               "args": [
                 {
-                  "name": "teckTalkTeckTalkId",
+                  "name": "teckTalkTechTalkId",
                   "description": null,
                   "type": {
                     "kind": "NON_NULL",
@@ -2571,7 +2571,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "teckTalkTeckTalkId",
+                  "name": "teckTalkTechTalkId",
                   "description": null,
                   "type": {
                     "kind": "NON_NULL",
@@ -2598,7 +2598,7 @@
               "deprecationReason": null,
               "args": [
                 {
-                  "name": "teckTalkTeckTalkId",
+                  "name": "teckTalkTechTalkId",
                   "description": null,
                   "type": {
                     "kind": "NON_NULL",
@@ -2653,7 +2653,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "teckTalkTeckTalkId",
+                  "name": "teckTalkTechTalkId",
                   "description": null,
                   "type": {
                     "kind": "NON_NULL",
@@ -3392,7 +3392,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkFilter",
+                "name": "TechTalkFilter",
                 "ofType": null
               },
               "defaultValue": null
@@ -3514,13 +3514,13 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "RoomteckTalkTeckTalkspeakerSpeaker",
+                "name": "RoomteckTalkTechTalkspeakerSpeaker",
                 "ofType": null
               },
               "defaultValue": null
             }
           ],
-          "name": "RoomteckTalkTeckTalk",
+          "name": "RoomteckTalkTechTalk",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -3559,7 +3559,7 @@
               "defaultValue": null
             }
           ],
-          "name": "RoomteckTalkTeckTalkspeakerSpeaker",
+          "name": "RoomteckTalkTechTalkspeakerSpeaker",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -3587,14 +3587,14 @@
               }
             },
             {
-              "name": "teckTalkTeckTalk",
+              "name": "teckTalkTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             }
@@ -3610,14 +3610,14 @@
           "enumValues": null,
           "fields": [
             {
-              "name": "teckTalkTeckTalk",
+              "name": "teckTalkTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -4340,7 +4340,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkFilter",
+                "name": "TechTalkFilter",
                 "ofType": null
               },
               "defaultValue": null
@@ -4462,13 +4462,13 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "SpeakerteckTalkTeckTalkroomRoom",
+                "name": "SpeakerteckTalkTechTalkroomRoom",
                 "ofType": null
               },
               "defaultValue": null
             }
           ],
-          "name": "SpeakerteckTalkTeckTalk",
+          "name": "SpeakerteckTalkTechTalk",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -4489,7 +4489,7 @@
               "defaultValue": null
             }
           ],
-          "name": "SpeakerteckTalkTeckTalkroomRoom",
+          "name": "SpeakerteckTalkTechTalkroomRoom",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -4574,7 +4574,7 @@
               }
             },
             {
-              "name": "TeckTalk",
+              "name": "TechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -4584,7 +4584,7 @@
                   "description": "",
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkSubscriptionFilter",
+                    "name": "TechTalkSubscriptionFilter",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -4592,7 +4592,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalkSubscriptionPayload",
+                "name": "TechTalkSubscriptionPayload",
                 "ofType": null
               }
             },
@@ -4625,7 +4625,7 @@
         },
         {
           "inputFields": null,
-          "name": "TeckTalkPreviousValues",
+          "name": "TechTalkPreviousValues",
           "description": null,
           "interfaces": [],
           "enumValues": null,
@@ -4719,7 +4719,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkSubscriptionFilter",
+                    "name": "TechTalkSubscriptionFilter",
                     "ofType": null
                   }
                 }
@@ -4737,7 +4737,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkSubscriptionFilter",
+                    "name": "TechTalkSubscriptionFilter",
                     "ofType": null
                   }
                 }
@@ -4813,13 +4813,13 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkSubscriptionFilterNode",
+                "name": "TechTalkSubscriptionFilterNode",
                 "ofType": null
               },
               "defaultValue": null
             }
           ],
-          "name": "TeckTalkSubscriptionFilter",
+          "name": "TechTalkSubscriptionFilter",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -5450,7 +5450,7 @@
               "defaultValue": null
             }
           ],
-          "name": "TeckTalkSubscriptionFilterNode",
+          "name": "TechTalkSubscriptionFilterNode",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -5460,7 +5460,7 @@
         },
         {
           "inputFields": null,
-          "name": "TeckTalkSubscriptionPayload",
+          "name": "TechTalkSubscriptionPayload",
           "description": null,
           "interfaces": [],
           "enumValues": null,
@@ -5489,7 +5489,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -5521,7 +5521,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalkPreviousValues",
+                "name": "TechTalkPreviousValues",
                 "ofType": null
               }
             }
@@ -5542,7 +5542,7 @@
               "defaultValue": null
             }
           ],
-          "name": "TeckTalkroomRoom",
+          "name": "TechTalkroomRoom",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -5581,7 +5581,7 @@
               "defaultValue": null
             }
           ],
-          "name": "TeckTalkspeakerSpeaker",
+          "name": "TechTalkspeakerSpeaker",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -5609,14 +5609,14 @@
               }
             },
             {
-              "name": "teckTalkTeckTalk",
+              "name": "teckTalkTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             }
@@ -5632,14 +5632,14 @@
           "enumValues": null,
           "fields": [
             {
-              "name": "teckTalkTeckTalk",
+              "name": "teckTalkTechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -5735,7 +5735,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "RoomteckTalkTeckTalk",
+                "name": "RoomteckTalkTechTalk",
                 "ofType": null
               },
               "defaultValue": null
@@ -5808,7 +5808,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "SpeakerteckTalkTeckTalk",
+                "name": "SpeakerteckTalkTechTalk",
                 "ofType": null
               },
               "defaultValue": null
@@ -5873,7 +5873,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkroomRoom",
+                "name": "TechTalkroomRoom",
                 "ofType": null
               },
               "defaultValue": null
@@ -5893,13 +5893,13 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkspeakerSpeaker",
+                "name": "TechTalkspeakerSpeaker",
                 "ofType": null
               },
               "defaultValue": null
             }
           ],
-          "name": "UpdateTeckTalk",
+          "name": "UpdateTechTalk",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -7991,7 +7991,7 @@
             },
             {
               "kind": "OBJECT",
-              "name": "TeckTalk",
+              "name": "TechTalk",
               "ofType": null
             },
             {
@@ -8294,7 +8294,7 @@
               }
             },
             {
-              "name": "allTeckTalks",
+              "name": "allTechTalks",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -8304,7 +8304,7 @@
                   "description": "",
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkFilter",
+                    "name": "TechTalkFilter",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -8314,7 +8314,7 @@
                   "description": null,
                   "type": {
                     "kind": "ENUM",
-                    "name": "TeckTalkOrderBy",
+                    "name": "TechTalkOrderBy",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -8381,7 +8381,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "OBJECT",
-                      "name": "TeckTalk",
+                      "name": "TechTalk",
                       "ofType": null
                     }
                   }
@@ -8745,7 +8745,7 @@
               }
             },
             {
-              "name": "_allTeckTalksMeta",
+              "name": "_allTechTalksMeta",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -8755,7 +8755,7 @@
                   "description": "",
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkFilter",
+                    "name": "TechTalkFilter",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -8765,7 +8765,7 @@
                   "description": null,
                   "type": {
                     "kind": "ENUM",
-                    "name": "TeckTalkOrderBy",
+                    "name": "TechTalkOrderBy",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -9008,7 +9008,7 @@
               }
             },
             {
-              "name": "TeckTalk",
+              "name": "TechTalk",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null,
@@ -9026,7 +9026,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -9164,7 +9164,7 @@
                   "description": "",
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkFilter",
+                    "name": "TechTalkFilter",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -9172,7 +9172,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -9743,7 +9743,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkFilter",
+                "name": "TechTalkFilter",
                 "ofType": null
               },
               "defaultValue": null
@@ -9904,7 +9904,7 @@
                   "description": "",
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkFilter",
+                    "name": "TechTalkFilter",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -9912,7 +9912,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "TeckTalk",
+                "name": "TechTalk",
                 "ofType": null
               }
             },
@@ -10483,7 +10483,7 @@
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "TeckTalkFilter",
+                "name": "TechTalkFilter",
                 "ofType": null
               },
               "defaultValue": null
@@ -10558,7 +10558,7 @@
         },
         {
           "inputFields": null,
-          "name": "TeckTalk",
+          "name": "TechTalk",
           "description": "",
           "interfaces": [
             {
@@ -10704,7 +10704,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkFilter",
+                    "name": "TechTalkFilter",
                     "ofType": null
                   }
                 }
@@ -10722,7 +10722,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TeckTalkFilter",
+                    "name": "TechTalkFilter",
                     "ofType": null
                   }
                 }
@@ -11350,7 +11350,7 @@
               "defaultValue": null
             }
           ],
-          "name": "TeckTalkFilter",
+          "name": "TechTalkFilter",
           "description": null,
           "interfaces": null,
           "enumValues": null,
@@ -11360,7 +11360,7 @@
         },
         {
           "inputFields": null,
-          "name": "TeckTalkOrderBy",
+          "name": "TechTalkOrderBy",
           "description": null,
           "interfaces": null,
           "enumValues": [

@@ -23,23 +23,25 @@ class UpdateTechTalkUsecase {
     }
 
     @Inject
-    public UpdateTechTalkUsecase(@NonNull final ApolloClient client) {
+    UpdateTechTalkUsecase(@NonNull final ApolloClient client) {
         this.client = client;
     }
 
     void save(String id, String speaker, String room, String topic, final Callback callback) {
-        client.newCall(new UpdateTechTalk(id, speaker, room, topic)).enqueue(
+        client.newCall(new UpdateTechTalk(id, speaker, room, topic))
+                .enqueue(
 
-                new ApolloCall.Callback<UpdateTechTalk.Data>() {
-                    @Override
-                    public void onResponse(@Nonnull Response<UpdateTechTalk.Data> response) {
-                        callback.done();
-                    }
+                        new ApolloCall.Callback<UpdateTechTalk.Data>() {
+                            @Override
+                            public void onResponse(
+                                    @Nonnull Response<UpdateTechTalk.Data> response) {
+                                callback.done();
+                            }
 
-                    @Override
-                    public void onFailure(@Nonnull ApolloException e) {
-                        callback.oops(e);
-                    }
-                });
+                            @Override
+                            public void onFailure(@Nonnull ApolloException e) {
+                                callback.oops(e);
+                            }
+                        });
     }
 }
