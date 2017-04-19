@@ -14,6 +14,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import entreco.nl.sample.techtalk.Navigator;
@@ -36,7 +37,9 @@ public class MasterViewModelTest {
 
     @Mock private FetchTechTalkUsecase mockUsecase;
     @Mock private Navigator mockNavigator;
-    @Mock private TechTalkModel mockModel;
+    @Mock private TechTalkModel mockModel1;
+    @Mock private TechTalkModel mockModel2;
+    @Mock private TechTalkModel mockModel3;
 
     @Mock private View mockView;
     @Mock private ViewPropertyAnimator mockViewPropertyAnimator;
@@ -87,7 +90,7 @@ public class MasterViewModelTest {
 
     @Test
     public void itShouldHaveCorrectNumberOfElements() throws Exception {
-        simulateLoadFinished(Arrays.asList(mockModel, mockModel, mockModel));
+        simulateLoadFinished(Arrays.asList(mockModel1, mockModel2, mockModel3));
 
         assertEquals(3, subject.items.size());
     }
@@ -116,11 +119,19 @@ public class MasterViewModelTest {
 
     @Test
     public void itShouldNotAddDuplicateItems() throws Exception {
-        simulateLoadFinished(new ArrayList<TechTalkModel>(0));
-        simulateLoadFinished(new ArrayList<TechTalkModel>(0));
+        simulateLoadFinished(Arrays.asList(mockModel1, mockModel1));
 
-        assertEquals( 2, subject.items.size() );
+        assertEquals( 1, subject.items.size() );
+    }
 
+    @Test
+    public void itShouldNotAddDuplicateItemsWhenLoadingMultipleTimes() throws Exception {
+
+        simulateLoadFinished(Collections.singletonList(mockModel1));
+        simulateLoadFinished(Collections.singletonList(mockModel1));
+        simulateLoadFinished(Collections.singletonList(mockModel1));
+
+        assertEquals( 1, subject.items.size() );
     }
 
     private void simulateLoadFinished(List<TechTalkModel> list) {

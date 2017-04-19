@@ -61,7 +61,7 @@ public class MasterViewModel implements FetchTechTalkUsecase.Callback {
     private void addItemsIfNotAddedAlready(@NonNull final Collection<TechTalkModel> talks) {
         for (final TechTalkModel ttm : talks) {
             if (!items.contains(ttm)) {
-                items.addAll(talks);
+                items.add(ttm);
             }
         }
     }

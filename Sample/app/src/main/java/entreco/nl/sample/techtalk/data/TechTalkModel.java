@@ -1,41 +1,76 @@
 package entreco.nl.sample.techtalk.data;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import nl.entreco.AllTechTalksQuery;
-import nl.entreco.UpcomingTechTalks;
+import fragment.TechTalkFragment;
+
 
 public class TechTalkModel {
 
-    @NonNull public final AllTechTalksQuery.Data.AllTeckTalk all;
-    @NonNull public final UpcomingTechTalks.Data.AllTeckTalk upcoming;
+    private static final String ID = "id";
+    private static final String ROOM = "room";
+    private static final String SPEAKER = "speaker";
+    private static final String TOPIC = "topic";
+    private static final String DATE = "date";
 
-    public TechTalkModel(@NonNull final AllTechTalksQuery.Data.AllTeckTalk data){
-        this.all = data;
-        this.upcoming = null;
+    private final String id;
+    private final String room;
+    private final String speaker;
+    private final String topic;
+    private final String date;
+
+    public String getId() {
+        return id;
     }
 
-    public TechTalkModel(@NonNull final UpcomingTechTalks.Data.AllTeckTalk data){
-        this.all = null;
-        this.upcoming = data;
+    public String getRoom() {
+        return room;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        TechTalkModel that = (TechTalkModel) o;
-
-        if (all != null ? !all.equals(that.all) : that.all != null) return false;
-        return upcoming != null ? upcoming.equals(that.upcoming) : that.upcoming == null;
-
+    public String getSpeaker() {
+        return speaker;
     }
 
-    @Override
-    public int hashCode() {
-        int result = all != null ? all.hashCode() : 0;
-        result = 31 * result + (upcoming != null ? upcoming.hashCode() : 0);
-        return result;
+    public String getTopic() {
+        return topic;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public TechTalkModel(@NonNull final TechTalkFragment data){
+        id =  data.id();
+        room = data.room() == null ? "" : data.room().description();
+        speaker = data.speaker() == null ? "" : data.speaker().name();
+        topic = data.topic();
+        date = data.date() == null ? "" : data.date().toString();
+    }
+
+    public TechTalkModel(@NonNull final Bundle bundle){
+        id = bundle.getString(ID);
+        room = bundle.getString(ROOM);
+        speaker = bundle.getString(SPEAKER);
+        topic = bundle.getString(TOPIC);
+        date = bundle.getString(DATE);
+    }
+
+    public Bundle toBundle(){
+        final Bundle bundle = new Bundle();
+        bundle.putString(ID, id);
+        bundle.putString(ROOM, room);
+        bundle.putString(SPEAKER, speaker);
+        bundle.putString(TOPIC, topic);
+        bundle.putString(DATE, date);
+        return bundle;
+    }
+
+    public TechTalkModel updateModel(@NonNull final String room, @NonNull final String speaker, @NonNull final String topic) {
+        final Bundle bundle = toBundle();
+        bundle.putString(ROOM, room);
+        bundle.putString(SPEAKER, speaker);
+        bundle.putString(TOPIC, topic);
+        return new TechTalkModel(bundle);
     }
 }

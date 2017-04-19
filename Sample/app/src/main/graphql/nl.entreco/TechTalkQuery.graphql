@@ -1,17 +1,17 @@
-query upcoming($date: DateTime) {
+query UpcomingTechTalksQuery($date: DateTime) {
   allTechTalks(filter: {date_gte: $date}, orderBy: date_ASC) {
     ...TechTalkFragment
   }
 }
 
-query all {
+query allTechTalksQuery {
   allTechTalks {
     ...TechTalkFragment
   }
 }
 
-mutation update($techTalk: ID!, $name: String!, $room: String!) {
-  updateTechTalk(id: $techTalk, speaker: {name: $name}, room: {description: $room}) {
+mutation updateTechTalk($techTalk: ID!, $speaker: String!, $room: String!) {
+  updateTechTalk(id: $techTalk, speaker: {name: $speaker}, room: {description: $room}) {
     ...TechTalkFragment
   }
 }

@@ -61,10 +61,9 @@ public class TechTalkListActivity extends AppCompatActivity implements Navigator
         final Intent intent = new Intent(this, TechTalkDetailActivity.class);
 
         intent.putExtra("transition", shared.getTransitionName());
+        intent.putExtra("techTalk", techTalkModel.toBundle());
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, shared, shared.getTransitionName());
         startActivity(intent, options.toBundle());
-
-//        startActivityForResult(intent, 123);
     }
 }

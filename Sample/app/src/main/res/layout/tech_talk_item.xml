@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{techTalk.upcoming.topic()}"
+                android:text="@{techTalk.topic}"
                 android:textColor="@color/primary_dark"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@{techTalk.upcoming.speaker().name() ?? @string/unknown_speaker}"
+                android:text="@{techTalk.speaker ?? @string/unknown_speaker}"
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp"
                 tools:text="Hello"/>
@@ -63,7 +63,7 @@
                 android:gravity="bottom"
                 android:maxLines="1"
                 android:paddingTop="2dp"
-                android:text="@{techTalk.upcoming.room().description() ?? @string/unknown_location}"
+                android:text="@{techTalk.room ?? @string/unknown_location}"
                 android:textColor="@color/secondary_text"
                 android:textSize="12sp"
                 android:textStyle="italic"

@@ -10,6 +10,8 @@ import com.apollographql.apollo.exception.ApolloException;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
+import entreco.nl.sample.techtalk.data.TechTalkModel;
+import fragment.TechTalkFragment;
 import nl.entreco.UpdateTechTalk;
 
 class UpdateTechTalkUsecase {
@@ -17,7 +19,7 @@ class UpdateTechTalkUsecase {
     private final ApolloClient client;
 
     interface Callback {
-        void done();
+        void done(@NonNull final TechTalkModel update);
 
         void oops(Exception error);
     }
@@ -27,19 +29,20 @@ class UpdateTechTalkUsecase {
         this.client = client;
     }
 
-    void save(String id, String speaker, String room, String topic, final Callback callback) {
-        client.newCall(new UpdateTechTalk(id, speaker, room, topic))
+    void save(TechTalkModel model, final Callback callback) {
+        client.newCall(new UpdateTechTalk(model.getId(), model.getSpeaker(), model.getRoom()))
                 .enqueue(
-
                         new ApolloCall.Callback<UpdateTechTalk.Data>() {
                             @Override
                             public void onResponse(
                                     @Nonnull Response<UpdateTechTalk.Data> response) {
-                                callback.done();
+                                final TechTalkFragment fragment = response.data().updateTechTalk().fragments().techTalkFragment();
+                                callback.done(new TechTalkModel(fragment));
                             }
 
                             @Override
                             public void onFailure(@Nonnull ApolloException e) {
+
                                 callback.oops(e);
                             }
                         });
