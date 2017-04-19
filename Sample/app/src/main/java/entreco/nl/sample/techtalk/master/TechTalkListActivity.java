@@ -11,6 +11,7 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import entreco.nl.sample.R;
 import entreco.nl.sample.databinding.ActivityTtListBinding;
@@ -20,6 +21,8 @@ import entreco.nl.sample.techtalk.data.TechTalkModel;
 import entreco.nl.sample.techtalk.detail.TechTalkDetailActivity;
 
 public class TechTalkListActivity extends AppCompatActivity implements Navigator {
+
+    private static final int EDIT_DETAILS = 1234;
 
     @Nullable ActivityTtListBinding binding;
     @Nullable MasterViewModel viewModel;
@@ -57,13 +60,24 @@ public class TechTalkListActivity extends AppCompatActivity implements Navigator
     }
 
     @Override
-    public void onTechTalkClicked(@NonNull final View view, @NonNull final View shared, @NonNull final TechTalkModel techTalkModel) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == EDIT_DETAILS && resultCode == RESULT_OK && viewModel != null) {
+            // Details have been added ->
+            Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+            viewModel.start();
+        }
+    }
+
+    @Override
+    public void onTechTalkClicked(@NonNull final View view, @NonNull final View shared,
+                                  @NonNull final TechTalkModel techTalkModel) {
         final Intent intent = new Intent(this, TechTalkDetailActivity.class);
 
         intent.putExtra("transition", shared.getTransitionName());
         intent.putExtra("techTalk", techTalkModel.toBundle());
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, shared, shared.getTransitionName());
-        startActivity(intent, options.toBundle());
+        startActivityForResult(intent, EDIT_DETAILS, options.toBundle());
     }
 }

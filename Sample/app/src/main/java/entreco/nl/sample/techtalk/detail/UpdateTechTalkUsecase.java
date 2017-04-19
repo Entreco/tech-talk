@@ -30,7 +30,7 @@ class UpdateTechTalkUsecase {
     }
 
     void save(TechTalkModel model, final Callback callback) {
-        client.newCall(new UpdateTechTalk(model.getId(), model.getSpeaker(), model.getRoom()))
+        client.newCall(new UpdateTechTalk(model.getId(), model.getSpeaker(), model.getRoom(), model.getTopic()))
                 .enqueue(
                         new ApolloCall.Callback<UpdateTechTalk.Data>() {
                             @Override

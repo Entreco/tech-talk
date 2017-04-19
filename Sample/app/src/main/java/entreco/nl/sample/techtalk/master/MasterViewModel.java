@@ -43,12 +43,13 @@ public class MasterViewModel implements FetchTechTalkUsecase.Callback {
     }
 
     void start() {
-        isLoading.set(true);
-        fetchTechTalkUsecase.fetchUpcoming(this);
+        items.clear();
+        onRefresh();
     }
 
     public void onRefresh() {
-        start();
+        isLoading.set(true);
+        fetchTechTalkUsecase.fetchUpcoming(this);
     }
 
     @Override

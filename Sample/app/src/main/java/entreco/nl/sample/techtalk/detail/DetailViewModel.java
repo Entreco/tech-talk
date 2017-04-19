@@ -12,6 +12,7 @@ import entreco.nl.sample.techtalk.data.TechTalkModel;
 public class DetailViewModel implements UpdateTechTalkUsecase.Callback {
 
     @NonNull public final ObservableBoolean isInEditMode;
+    @NonNull public final ObservableBoolean didEditModel;
     @NonNull public final ObservableField<TechTalkModel> techTalk;
     @NonNull private final UpdateTechTalkUsecase updateUsecase;
 
@@ -19,6 +20,7 @@ public class DetailViewModel implements UpdateTechTalkUsecase.Callback {
     DetailViewModel(@NonNull final UpdateTechTalkUsecase updateUsecase) {
         this.updateUsecase = updateUsecase;
         this.isInEditMode = new ObservableBoolean(false);
+        this.didEditModel = new ObservableBoolean(false);
         this.techTalk = new ObservableField<>();
     }
 
@@ -41,6 +43,7 @@ public class DetailViewModel implements UpdateTechTalkUsecase.Callback {
     @Override
     public void done(@NonNull final TechTalkModel update) {
         isInEditMode.set(false);
+        didEditModel.set(!update.equals(techTalk.get()));
         setTechTalk(update);
     }
 

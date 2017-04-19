@@ -73,4 +73,29 @@ public class TechTalkModel {
         bundle.putString(TOPIC, topic);
         return new TechTalkModel(bundle);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TechTalkModel that = (TechTalkModel) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (room != null ? !room.equals(that.room) : that.room != null) return false;
+        if (speaker != null ? !speaker.equals(that.speaker) : that.speaker != null) return false;
+        if (topic != null ? !topic.equals(that.topic) : that.topic != null) return false;
+        return date != null ? date.equals(that.date) : that.date == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (room != null ? room.hashCode() : 0);
+        result = 31 * result + (speaker != null ? speaker.hashCode() : 0);
+        result = 31 * result + (topic != null ? topic.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        return result;
+    }
 }
