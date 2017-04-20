@@ -60,52 +60,64 @@
                           android:animateLayoutChanges="true"
                           android:orientation="vertical">
 
-                <TextView
-                    style="@style/Details.Title"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@{viewModel.techTalk.topic}"
-                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}"
-                    tools:text="REST In Peace"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}">
 
-                <EditText
-                    android:id="@+id/et_topic"
-                    style="@style/Details.Title"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@{viewModel.techTalk.topic}"
-                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}"
-                    tools:visibility="gone"/>
+                    <TextView
+                        style="@style/Details.Title"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@{viewModel.techTalk.topic}"
+                        tools:text="REST In Peace"/>
 
-                <TextView
-                    style="@style/Details.Speaker"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@{viewModel.techTalk.speaker}"
-                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}"
-                    tools:text="Remco Janssen"/>
+                    <TextView
+                        style="@style/Details.Speaker"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@{viewModel.techTalk.speaker}"
+                        tools:text="Remco Janssen"/>
 
-                <EditText
-                    android:id="@+id/et_speaker"
-                    style="@style/Details.Speaker"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@{viewModel.techTalk.speaker}"
-                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}"
-                    tools:text="Remco Janssen"
-                    tools:visibility="gone"/>
+                    <TextView
+                        style="@style/Details.Room"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@{viewModel.techTalk.room}"
+                        tools:text="HTC34.4.32.0"/>
+                </LinearLayout>
 
-                <TextView
-                    style="@style/Details.Room"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@{viewModel.techTalk.room}"
-                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}"
-                    tools:text="HTC34.4.32.0"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}">
 
-                <EditText
-                    android:id="@+id/et_room"
-                    style="@style/Details.Room"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@{viewModel.techTalk.room}"
-                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}"
-                    tools:text="HTC34.4.32.0"
-                    tools:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_topic"
+                        style="@style/Details.Title"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@{viewModel.techTalk.topic}"
+                        tools:visibility="gone"/>
+
+
+                    <EditText
+                        android:id="@+id/et_speaker"
+                        style="@style/Details.Speaker"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@{viewModel.techTalk.speaker}"
+                        tools:text="Remco Janssen"
+                        tools:visibility="gone"/>
+
+
+                    <EditText
+                        android:id="@+id/et_room"
+                        style="@style/Details.Room"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@{viewModel.techTalk.room}"
+                        tools:text="HTC34.4.32.0"
+                        tools:visibility="gone"/>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
