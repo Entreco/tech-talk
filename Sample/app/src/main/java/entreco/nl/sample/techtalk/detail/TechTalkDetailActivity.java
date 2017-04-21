@@ -1,9 +1,16 @@
 package entreco.nl.sample.techtalk.detail;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.Observable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.view.Gravity;
 
 import entreco.nl.sample.R;
 import entreco.nl.sample.databinding.ActivityTtDetailBinding;
@@ -12,8 +19,24 @@ import entreco.nl.sample.techtalk.data.TechTalkModel;
 
 public class TechTalkDetailActivity extends AppCompatActivity {
 
-    private ActivityTtDetailBinding binding;
-    private DetailViewModel viewModel;
+    @Nullable private ActivityTtDetailBinding binding;
+    @Nullable private DetailViewModel viewModel;
+
+    @NonNull private final Observable.OnPropertyChangedCallback onChangedCallback = new Observable.OnPropertyChangedCallback() {
+        @Override
+        public void onPropertyChanged(Observable observable, int i) {
+            if(binding != null) {
+
+                final Slide slide = new Slide(Gravity.BOTTOM);
+                TransitionManager.beginDelayedTransition(binding.editables, slide);
+
+                final TransitionSet set = new TransitionSet();
+                set.addTransition(new Slide(Gravity.TOP));
+                set.addTransition(new Fade());
+                TransitionManager.beginDelayedTransition(binding.viewables, set);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +48,7 @@ public class TechTalkDetailActivity extends AppCompatActivity {
 
         viewModel = DaggerTechTalkDetailComponent.builder()
                 .apolloModule(new ApolloModule(this))
-                .techTalkDetailModule(new TechTalkDetailModule())
+                .techTalkDetailModule(new TechTalkDetailModule(onChangedCallback))
                 .build().viewModel();
         viewModel.setTechTalk(new TechTalkModel(getIntent().getBundleExtra("techTalk")));
 

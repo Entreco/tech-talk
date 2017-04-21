@@ -1,5 +1,6 @@
 package entreco.nl.sample.techtalk.detail;
 
+import android.databinding.Observable;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
@@ -11,26 +12,31 @@ import entreco.nl.sample.techtalk.data.TechTalkModel;
 
 public class DetailViewModel implements UpdateTechTalkUsecase.Callback {
 
-    @NonNull public final ObservableBoolean isInEditMode;
-    @NonNull public final ObservableBoolean didEditModel;
-    @NonNull public final ObservableField<TechTalkModel> techTalk;
+    @NonNull public final ObservableBoolean isInEditMode = new ObservableBoolean(false);
+    @NonNull public final ObservableBoolean didEditModel = new ObservableBoolean(false);
+    @NonNull public final ObservableField<TechTalkModel> techTalk = new ObservableField<>();
     @NonNull private final UpdateTechTalkUsecase updateUsecase;
 
     @Inject
-    DetailViewModel(@NonNull final UpdateTechTalkUsecase updateUsecase) {
+    DetailViewModel(@NonNull final UpdateTechTalkUsecase updateUsecase,
+                    @NonNull final Observable.OnPropertyChangedCallback onChangedCallback) {
         this.updateUsecase = updateUsecase;
-        this.isInEditMode = new ObservableBoolean(false);
-        this.didEditModel = new ObservableBoolean(false);
-        this.techTalk = new ObservableField<>();
+        this.isInEditMode.addOnPropertyChangedCallback(onChangedCallback);
     }
 
     void setTechTalk(@NonNull TechTalkModel techTalkModel) {
         techTalk.set(techTalkModel);
     }
 
-    public void toggleEditMode(@NonNull final EditText room, @NonNull final EditText speaker, @NonNull final EditText topic) {
-        saveUpdate(isInEditMode.get(), room.getText().toString(), speaker.getText().toString(), topic.getText().toString());
+    public void toggleEditMode(@NonNull final EditText room, @NonNull final EditText speaker,
+                               @NonNull final EditText topic) {
+        saveUpdate(isInEditMode.get(), room.getText().toString(), speaker.getText().toString(),
+                topic.getText().toString());
         isInEditMode.set(!isInEditMode.get());
+    }
+
+    public void done(){
+
     }
 
     private void saveUpdate(final boolean save, String room, String speaker, String topic) {

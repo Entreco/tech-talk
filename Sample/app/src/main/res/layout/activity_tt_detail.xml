@@ -55,16 +55,19 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:animateLayoutChanges="true"
-                          android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/viewables"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{viewModel.isInEditMode ? View.GONE : View.VISIBLE}"
+                    tools:visibility="gone">
 
                     <TextView
                         style="@style/Details.Title"
@@ -86,35 +89,51 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/editables"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}">
-
-                    <EditText
-                        android:id="@+id/et_topic"
-                        style="@style/Details.Title"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:text="@{viewModel.techTalk.topic}"
-                        tools:visibility="gone"/>
+                    android:visibility="@{viewModel.isInEditMode ? View.VISIBLE : View.GONE}"
+                    tools:visibility="visible">
 
 
-                    <EditText
-                        android:id="@+id/et_speaker"
-                        style="@style/Details.Speaker"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:text="@{viewModel.techTalk.speaker}"
-                        tools:text="Remco Janssen"
-                        tools:visibility="gone"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/et_topic"
+                            style="@style/Edit.Title"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:hint="@string/topic"
+                            android:text="@{viewModel.techTalk.topic}"
+                            tools:text="Topic">
+                            <requestFocus/>
+                        </android.support.design.widget.TextInputEditText>
+                    </android.support.design.widget.TextInputLayout>
 
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/et_speaker"
+                            style="@style/Edit.Speaker"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:hint="@string/speaker"
+                            android:text="@{viewModel.techTalk.speaker}"
+                            tools:text="Remco Janssen"/>
+                    </android.support.design.widget.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/et_room"
-                        style="@style/Details.Room"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:text="@{viewModel.techTalk.room}"
-                        tools:text="HTC34.4.32.0"
-                        tools:visibility="gone"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/et_room"
+                            style="@style/Edit.Room"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:hint="@string/location"
+                            android:text="@{viewModel.techTalk.room}"
+                            tools:text="HTC34.4.32.0"/>
+                    </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 

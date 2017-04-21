@@ -5,4 +5,7 @@
 
   <!-- Dynamic Shared Transition name -->
   <string name="transition">transition_%1$s</string>
+    <string name="topic">Topic</string>
+  <string name="speaker">Speaker</string>
+  <string name="location">Location</string>
 </resources>

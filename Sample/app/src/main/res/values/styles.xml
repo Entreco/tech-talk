@@ -1,41 +1,62 @@
 <resources>
 
-  <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/primary</item>
-    <item name="colorPrimaryDark">@color/primary_light</item>
-    <item name="colorAccent">@color/accent</item>
-    <item name="android:textColorPrimary">@color/primary_text</item>
-    <item name="android:textColorSecondary">@color/secondary_text</item>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_light</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
 
-    <!--<item name="android:fitsSystemWindows">true</item>-->
-    <!--<item name="android:windowTranslucentStatus">true</item>-->
-    <item name="android:statusBarColor">@color/primary_dark</item>
-    <item name="android:windowContentTransitions">true</item>
-  </style>
-  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-  <style name="Master" parent="AppTheme">
-    <item name="android:windowExitTransition">@android:transition/fade</item>
-  </style>
-  <style name="Detail" parent="AppTheme">
-    <item name="android:windowEnterTransition">@android:transition/slide_bottom</item>
-  </style>
+    <style name="Master" parent="AppTheme">
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+    </style>
+    <style name="Detail" parent="AppTheme">
+        <item name="android:windowEnterTransition">@android:transition/slide_bottom</item>
+    </style>
 
-  <style name="Details"></style>
-  <style name="Details.Title">
-    <item name="android:textColor">@color/primary_dark</item>
-    <item name="android:textSize">28sp</item>
-    <item name="android:textStyle">bold</item>
-  </style>
-  <style name="Details.Speaker">
-    <item name="android:textColor">@color/primary_text</item>
-    <item name="android:textSize">20sp</item>
-  </style>
-  <style name="Details.Room">
-    <item name="android:paddingTop">16dp</item>
-  </style>
+    <style name="Details">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+    </style>
+    <style name="Details.Title">
+        <item name="android:textColor">@color/primary_dark</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Details.Speaker">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="Details.Room">
+    </style>
 
+    <style name="Edit" >
+        <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">text</item>
+    </style>
+    <style name="Edit.Title">
+        <item name="android:textColor">@color/primary_dark</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Edit.Speaker">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="Edit.Room">
+        <item name="android:imeOptions">actionDone</item>
+    </style>
 </resources>
