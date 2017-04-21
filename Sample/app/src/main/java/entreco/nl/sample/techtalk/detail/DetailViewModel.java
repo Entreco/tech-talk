@@ -35,10 +35,6 @@ public class DetailViewModel implements UpdateTechTalkUsecase.Callback {
         isInEditMode.set(!isInEditMode.get());
     }
 
-    public void done(){
-
-    }
-
     private void saveUpdate(final boolean save, String room, String speaker, String topic) {
         if (save) {
             final TechTalkModel ttm = techTalk.get().updateModel(room, speaker, topic);
